@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
 import FeedbackData from "@/data/data";
 import { Feedback, FeedbackContextProviderProps } from "@/types/types";
+import { createContext, useState } from "react";
 
 export type FeedbackContextType = {
   feedbacks: Feedback[]
@@ -20,6 +20,6 @@ export const FeedbackContextProvider = ({ children }: FeedbackContextProviderPro
   }
 
   return (
-    <FeedbackContext.Provider value={{ feedbacks, setFeedbacks, handleDelete }}> {children}</FeedbackContext.Provider>
+    <FeedbackContext.Provider value={{ feedbacks, setFeedbacks, handleDelete }}>{children}</FeedbackContext.Provider>
   )
 }

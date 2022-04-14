@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { FeedbackList } from '@/components/FeedbackList'
+import { FeedbackStats } from '@/components/FeedbackStats'
 import { Header } from '@/components/Header'
 import { FeedbackContextProvider } from 'context/FeedbackContext'
 
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <Header />
 
       <div className="container">
+        <FeedbackStats />
         <FeedbackList />
       </div>
     </FeedbackContextProvider>
