@@ -1,4 +1,6 @@
-const FeedbackData = [
+import { Feedback } from "@/types/types";
+
+const FeedbackData: Feedback[] = [
   {
     id: 1,
     rating: 10,

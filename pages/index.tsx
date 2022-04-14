@@ -2,10 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { FeedbackList } from '@/components/FeedbackList'
 import { Header } from '@/components/Header'
+import { FeedbackContextProvider } from 'context/FeedbackContext'
 
 const Home: NextPage = () => {
   return (
-    <>
+    <FeedbackContextProvider>
       <Head>
         <title>Feedback App</title>
         <meta name="description" content="Feedback App" />
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
       <div className="container">
         <FeedbackList />
       </div>
-    </>
+    </FeedbackContextProvider>
   )
 }
 

@@ -4,6 +4,8 @@ export type ChildrenType = {
 
 export type CardProps = ChildrenType
 
+export type FeedbackContextProviderProps = ChildrenType
+
 export type Feedback = {
   id: number
   rating: number
