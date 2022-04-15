@@ -5,11 +5,11 @@ import { Card } from "./Card"
 import { Rating } from "./Rating"
 
 export const FeedbackForm: React.FC = () => {
-  const { text, handleFormTextChange, btnDisabled, message } = useContext(FeedbackContext)
+  const { text, handleFormTextChange, btnDisabled, message, handleSubmit } = useContext(FeedbackContext)
 
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit} >
         <h2>How would you rate your service with us?</h2>
         <Rating />
         <div className="input-group">
@@ -19,6 +19,6 @@ export const FeedbackForm: React.FC = () => {
       </form>
 
       {message && <div className="message">{message}</div>}
-    </Card>
+    </Card >
   )
 }

@@ -7,7 +7,7 @@ export type CardProps = ChildrenType
 export type FeedbackContextProviderProps = ChildrenType
 
 export type Feedback = {
-  id: number
+  id: string
   rating: number
   text: string
 }
@@ -29,9 +29,10 @@ export type FeedbackContextType = {
   setBtnDisabled: React.Dispatch<React.SetStateAction<boolean>>
   setRating: React.Dispatch<React.SetStateAction<number>>
   setSelected: React.Dispatch<React.SetStateAction<number>>
-  handleDelete: (value: number) => void
+  handleDelete: (value: string) => void
   handleFormTextChange: (value: React.ChangeEvent<HTMLInputElement>) => void
   handleRadioInputChange: (value: React.ChangeEvent<HTMLInputElement>) => void
+  handleSubmit: (value: React.FormEvent<HTMLFormElement>) => void
 }
 
 export type HeaderProps = {

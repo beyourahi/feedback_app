@@ -1,5 +1,6 @@
+import { v4 as uuidv4 } from 'uuid';
 import FeedbackData from "@/data/data";
-import { FeedbackContextProviderProps, FeedbackContextType } from "@/types/types";
+import { Feedback, FeedbackContextProviderProps, FeedbackContextType } from "@/types/types";
 import { createContext, useState } from "react";
 
 export const FeedbackContext = createContext({} as FeedbackContextType)
@@ -26,7 +27,7 @@ export const FeedbackContextProvider = ({ children }: FeedbackContextProviderPro
     setText(e.target.value)
   }
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (window.confirm("Are you sure you want to delete?")) {
       setFeedbacks(feedbacks.filter(feedback => feedback.id !== id))
     }
@@ -37,9 +38,28 @@ export const FeedbackContextProvider = ({ children }: FeedbackContextProviderPro
     setRating(+e.target.value)
   }
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        id: uuidv4(),
+        text,
+        rating
+      }
+      console.log(newFeedback)
+      addFeedback(newFeedback)
+      setText("")
+    }
+  }
+
+  const addFeedback = (newFeedback: Feedback) => {
+    setFeedbacks([newFeedback, ...feedbacks])
+  }
+
   return (
     <FeedbackContext.Provider value={{
-      feedbacks, text, message, btnDisabled, rating, selected, setFeedbacks, setText, setBtnDisabled, setMessage, setRating, setSelected, handleDelete, handleFormTextChange, handleRadioInputChange
+      feedbacks, text, message, btnDisabled, rating, selected, setFeedbacks, setText, setBtnDisabled, setMessage, setRating, setSelected, handleDelete, handleFormTextChange, handleRadioInputChange, handleSubmit
     }}>
       {children}
     </FeedbackContext.Provider>
