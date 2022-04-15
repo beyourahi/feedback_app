@@ -4,6 +4,7 @@ import { FeedbackList } from '@/components/FeedbackList'
 import { FeedbackStats } from '@/components/FeedbackStats'
 import { Header } from '@/components/Header'
 import { FeedbackContextProvider } from 'context/FeedbackContext'
+import { FeedbackForm } from '@/components/FeedbackForm'
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
       <Header />
 
       <div className="container">
+        <FeedbackForm />
         <FeedbackStats />
         <FeedbackList />
       </div>
