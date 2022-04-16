@@ -4,7 +4,7 @@ import { FeedbackContext } from "@/context/FeedbackContext"
 export const FeedbackStats: React.FC = () => {
   const { feedbacks } = useContext(FeedbackContext)
 
-  let average = feedbacks.reduce((acc, curr) => (acc + curr.rating), 0) / feedbacks.length
+  let average = feedbacks.reduce((acc, curr) => (acc + curr.rating!), 0) / feedbacks.length
 
   return (
     <>
