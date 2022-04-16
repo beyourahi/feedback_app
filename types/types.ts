@@ -7,9 +7,14 @@ export type CardProps = ChildrenType
 export type FeedbackContextProviderProps = ChildrenType
 
 export type Feedback = {
-  id: string
-  rating: number
-  text: string
+  id?: string
+  rating?: number
+  text?: string
+}
+
+export type FeedbackEdit = {
+  feedback: Feedback
+  edit: boolean
 }
 
 export type FeedbackItemProps = {
@@ -18,18 +23,21 @@ export type FeedbackItemProps = {
 
 export type FeedbackContextType = {
   feedbacks: Feedback[]
-  text: string
+  text: string | undefined
   message: string
   btnDisabled: boolean
-  rating: number
-  selected: number
+  rating: number | undefined
+  selected: number | undefined
+  feedbackEdit: FeedbackEdit
   setFeedbacks: React.Dispatch<React.SetStateAction<Feedback[]>>
-  setText: React.Dispatch<React.SetStateAction<string>>
+  setFeedbackEdit: React.Dispatch<React.SetStateAction<FeedbackEdit>>
+  setText: React.Dispatch<React.SetStateAction<string | undefined>>
   setMessage: React.Dispatch<React.SetStateAction<string>>
   setBtnDisabled: React.Dispatch<React.SetStateAction<boolean>>
-  setRating: React.Dispatch<React.SetStateAction<number>>
-  setSelected: React.Dispatch<React.SetStateAction<number>>
-  handleDelete: (value: string) => void
+  setRating: React.Dispatch<React.SetStateAction<number | undefined>>
+  setSelected: React.Dispatch<React.SetStateAction<number | undefined>>
+  handleDelete: (value: string | undefined) => void
+  handleEdit: (value: Feedback) => void
   handleFormTextChange: (value: React.ChangeEvent<HTMLInputElement>) => void
   handleRadioInputChange: (value: React.ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (value: React.FormEvent<HTMLFormElement>) => void

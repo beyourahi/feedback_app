@@ -1,8 +1,12 @@
 import { FeedbackContext } from "@/context/FeedbackContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 export const Rating: React.FC = () => {
-  const { selected, handleRadioInputChange } = useContext(FeedbackContext)
+  const { selected, setSelected, handleRadioInputChange, feedbackEdit } = useContext(FeedbackContext)
+
+  useEffect(() => {
+    setSelected(feedbackEdit.feedback.rating)
+  }, [feedbackEdit])
 
   return (
     <ul className="rating">

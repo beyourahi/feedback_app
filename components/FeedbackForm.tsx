@@ -1,11 +1,19 @@
 import { FeedbackContext } from "@/context/FeedbackContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Button } from "./Button"
 import { Card } from "./Card"
 import { Rating } from "./Rating"
 
 export const FeedbackForm: React.FC = () => {
-  const { text, handleFormTextChange, btnDisabled, message, handleSubmit } = useContext(FeedbackContext)
+  const { text, handleFormTextChange, btnDisabled, setBtnDisabled, message, handleSubmit, feedbackEdit, setText, setRating } = useContext(FeedbackContext)
+
+  useEffect(() => {
+    if (feedbackEdit.edit) {
+      setBtnDisabled(false)
+      setText(feedbackEdit.feedback.text)
+      setRating(feedbackEdit.feedback.rating)
+    }
+  }, [feedbackEdit])
 
   return (
     <Card>
